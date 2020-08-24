@@ -1,0 +1,9 @@
+spring:
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 8002
+
+swagger:
+  version: '19.6.1.4-SNAPSHOT'
