@@ -1,0 +1,21 @@
+server:
+  port: 8099
+
+application:
+  logger:
+    level: INFO
+
+logging:
+  level:
+    ROOT: INFO
+  file: ${APP_LOG}/rfg-qpid-embedded.log
+qpid:
+  embedded:
+    bindingAddress: drfglx12.dns21.socgen
+    port: 8002
+    management:
+      port: 8085
+      vhost: default
+      user:
+        name: guest
+        password: guest

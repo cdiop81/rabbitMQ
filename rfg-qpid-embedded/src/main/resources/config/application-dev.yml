@@ -1,0 +1,26 @@
+server:
+  port: 8099
+
+application:
+  logger:
+    level: INFO
+
+logging:
+  level:
+    ROOT: INFO
+  file: ./rfg-qpid-embedded.log
+# Activate some Spring boot actuator endpoint
+management:
+  security:
+    enabled: false
+
+qpid:
+  embedded:
+    bindingAddress: 127.0.0.1
+    port: 8002
+    management:
+      port: 8085
+      vhost: default
+      user:
+        name: guest
+        password: guest

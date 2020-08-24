@@ -1,0 +1,53 @@
+{
+  "name": "Embedded Broker",
+  "modelVersion": "7.0",
+  "authenticationproviders" : [ {
+    "name" : "local",
+    "type" : "Plain",
+    "secureOnlyMechanisms": [],
+    "users": [{
+      "id": "63189d1e-ef06-4ecf-8392-3198644de2ad",
+      "name": "${qpid.user.name}",
+      "password": "${qpid.user.password}",
+      "type": "managed"
+    }]
+  } ],
+  "ports" : [  {
+    "name" : "AMQP",
+    "port" : "${qpid.amqp_port}",
+    "protocols": [ "AMQP_1_0", "AMQP_0_9_1", "AMQP_0_9", "AMQP_0_8" ],
+    "authenticationProvider" : "local",
+    "bindingAddress" : "${qpid.bindingAddress}",
+    "virtualhostaliases" : [
+      {
+        "name": "nameAlias",
+        "type": "nameAlias"
+      },
+      {
+        "name": "defaultAlias",
+        "type": "defaultAlias"
+      },
+      {
+        "name": "hostnameAlias",
+        "type": "hostnameAlias"
+      }
+    ]
+  },
+    {
+      "name" : "HTTP",
+      "port" : "${qpid.http_port}",
+      "authenticationProvider" : "local",
+      "allowConfidentialOperationsOnInsecureChannels": "true",
+      "protocols" : [ "HTTP" ]
+    }],
+  "virtualhostnodes" : [ {
+    "name" : "default",
+    "type" : "JSON",
+    "defaultVirtualHostNode" : "true",
+    "virtualHostInitialConfiguration" : "{\"type\" : \"DERBY\"}"
+  }],
+  "plugins" : [ {
+    "type" : "MANAGEMENT-HTTP",
+    "name" : "httpManagement"
+  }]
+}
